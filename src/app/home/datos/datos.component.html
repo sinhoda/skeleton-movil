@@ -1,0 +1,45 @@
+<div class="titulo-div">
+    <h1 #titulo class="titulo">Bienvenido!</h1>
+  </div>  
+    
+
+    <h4>Usuario: {{usuario.nombre}}  </h4>
+    <h2>Informacion adicional</h2>
+    <form #formulario="ngForm" (ngSubmit)="addDatos()" >
+      <ion-list>
+        <div #input>
+          <ion-item>
+            <ion-input #input name="nombre" type="text" [(ngModel)] = "nombre" label="Nombre"></ion-input>
+          </ion-item>
+          <br>
+          <ion-item>
+            <ion-input #input name="apellido" [(ngModel)]="apellido" type="text" label="Apellido"></ion-input>
+          </ion-item>
+        </div>
+        <br>
+        <ion-item>
+          <ion-select name="nivelEducacional" [(ngModel)]="nivelEducacional"  label="Nivel de educacion" placeholder="Nivel educacional">
+            <ion-select-option value="media">Media completa</ion-select-option>
+            <ion-select-option value="universitaria">Universitaria</ion-select-option>
+            <ion-select-option value="sinCompletar">Sin completar</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <br>
+        <ion-item>
+          <ion-input name="fechaNacimiento" [(ngModel)]="fechaNacimiento" label="Fecha de nacimiento" display-format="DD-MM-YYYY"></ion-input>
+        
+        </ion-item>
+
+      </ion-list>
+
+      <ion-button  (click)="limpiarInputs(formulario)">Limpiar espacios</ion-button>
+      
+        <ion-button (click)="setOpen(true)" type="submit">Agregar datos</ion-button>
+        <ion-alert
+          [isOpen]="isAlertOpen"
+          header="{{usuario.nombre}}"
+          message="nombre: {{nombre}} {{apellido}} - nivel educacional: {{nivelEducacional}} - fecha de nacimiento: {{fechaNacimiento}}" 
+          [buttons]="alertButtons"
+          (didDismiss)="setOpen(false)"
+        ></ion-alert>
+  </form>  

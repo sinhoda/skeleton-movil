@@ -1,0 +1,52 @@
+<ion-content class="ion-padding">
+  <h1>Agregar experiencia laboral</h1>
+
+  <form #agregarExpForm="ngForm" (ngSubmit)="addExp()">
+
+    <ion-list>
+
+      <ion-item>
+        <ion-input name="empresa" labelPlacement="floating" placeholder="Enter text" [(ngModel)]="empresa" required>
+          <div slot="label">Empresa <ion-text color="danger">(Obligatorio)</ion-text></div>
+        </ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-input name="anInicio" minlength="4" maxlength="4" labelPlacement="floating" placeholder="Enter text" [(ngModel)]="anInicio" required>
+          <div slot="label">Año inicio <ion-text color="danger">(Obligatorio)</ion-text></div>
+        </ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-select name="trabajoActual" label-placement="floating" [(ngModel)]="trabajoActual" (ionChange)="handleChange($event)" required placeholder="Seleccione una opcion">
+          <div slot="label">¿Actualmente trabaja ahi? <ion-text color="danger">(Obligatorio)</ion-text></div>          
+          <ion-select-option value="no">No</ion-select-option>
+          <ion-select-option value="si">Si</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-input name="anTermino" label="Año término" minlength="4" maxlength="4" labelPlacement="floating" placeholder="Enter text" [(ngModel)]="anTermino" [disabled]="trabajoActual!=='no'" ></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-input name="cargo" labelPlacement="floating" placeholder="Enter text" [(ngModel)]="cargo" required>
+          <div slot="label">Cargo <ion-text color="danger">(Obligatorio)</ion-text></div>
+        </ion-input>
+      </ion-item>
+
+    </ion-list>
+
+    <ion-button (click)="resetForm(agregarExpForm)">
+      Limpiar espacios
+    </ion-button>
+    
+    <ion-button type="submit" [disabled]="agregarExpForm.invalid">
+      Agregar experiencia
+    </ion-button>
+
+  </form>
+
+  
+
+</ion-content>

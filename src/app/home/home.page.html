@@ -1,0 +1,33 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Blank
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Blank</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-segment value="default" (ionChange)="segmentChanged($event)">
+    <ion-segment-button value="experiencia">
+      <ion-label>Experiencia laboral</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="certificaciones">
+      <ion-label>Certificados</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="datos">
+      <ion-label>Mis datos</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+
+
+  <router-outlet>
+    
+  </router-outlet>
+
+</ion-content>

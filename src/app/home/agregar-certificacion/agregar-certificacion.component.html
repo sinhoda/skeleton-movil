@@ -1,0 +1,47 @@
+<ion-content>
+  <ion-item>
+      <h1>Certificaciones</h1>
+  </ion-item>
+
+  <form #agregarCertForm="ngForm" (ngSubmit)="addCert()">
+
+      <ion-list>
+        <ion-item>
+          <ion-input name="nombreCertificado" labelPlacement="floating" placeholder="Enter text" [(ngModel)]="nombreCertificado" required>
+            <div slot="label">Nombre de certificado <ion-text color="danger">(Obligatorio)</ion-text></div>
+          </ion-input>
+        </ion-item>
+  
+        <ion-item>
+          <ion-input name="fechaObtencion" minlength="4" maxlength="4" labelPlacement="floating" placeholder="Enter text" [(ngModel)]="fechaObtencion" required>
+            <div slot="label">Fecha de obtencion <ion-text color="danger">(Obligatorio)</ion-text></div>
+          </ion-input>
+        </ion-item>
+  
+        <ion-item>
+          <ion-select name="puedeVencer" label-placement="floating" [(ngModel)]="puedeVencer" (ionChange)="handleChange($event)" required placeholder="Seleccione una opcion">
+            <div slot="label">¿El certificado puede vencer? <ion-text color="danger">(Obligatorio)</ion-text></div>          
+            <ion-select-option value="no">No</ion-select-option>
+            <ion-select-option value="si">Si</ion-select-option>
+          </ion-select>
+        </ion-item>
+  
+        <ion-item>
+          <ion-input name="fechaVencimiento" label="Año término" minlength="4" maxlength="4" labelPlacement="floating" placeholder="Enter text" [(ngModel)]="fechaVencimiento" [disabled]="puedeVencer == 'no'" ></ion-input>
+        </ion-item>
+       
+  
+      </ion-list>
+  
+      <ion-button (click)="resetForm(agregarCertForm)">
+        Limpiar espacios
+      </ion-button>
+
+      <ion-button type="submit" [disabled]="agregarCertForm.invalid">
+        Agregar certficacion
+      </ion-button> 
+  
+    </form>
+  
+
+</ion-content>
